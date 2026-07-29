@@ -10,7 +10,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 POLICIES_DIRECTORY = Path(__file__).with_name("policies")
 MIN_RELEVANCE_SCORE = 0.15
-
+TOP_K = 1
 
 def load_policies() -> list[dict[str, str]]:
     """Load every Markdown policy file from the policies directory."""
@@ -39,7 +39,8 @@ def retrieve_policy(question: str) -> dict[str, object] | None:
     question_vector = vectorizer.transform([question])
 
     scores = cosine_similarity(question_vector, policy_vectors)[0]
-    best_match_index = int(scores.argmax())
+    top_match_indices = scores.argsort()[::-1][:TOP_K]
+    best_match_index = int(top_match_indices[0])
     best_score = float(scores[best_match_index])
 
     if best_score < MIN_RELEVANCE_SCORE:

@@ -49,6 +49,8 @@ The requested customer ID must match the customer associated with the current su
 
 Both tools are read-only. The agent cannot issue refunds, modify orders, or change customer accounts.
 
+FastMCP validates tool arguments against their generated input schemas. Calls with missing required fields or incorrect input types are rejected by the tool layer before the order or account lookup logic runs.
+
 ## Policy Retrieval
 
 The project contains six short support-policy documents covering:
@@ -60,7 +62,7 @@ The project contains six short support-policy documents covering:
 - Account appeals
 - Subscription cancellations
 
-The retriever uses TF-IDF and cosine similarity to select the most relevant policy.
+Each short policy document is treated as one retrievable chunk. The retriever uses TF-IDF and cosine similarity to retrieve the top 1 relevant chunk (`k = 1`).
 
 When no policy reaches the minimum relevance score, the agent clearly states that the available policy knowledge base does not cover the question.
 
