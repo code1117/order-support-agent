@@ -5,6 +5,8 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "anthropic>=0.120.2",
     "mcp[cli]>=1.27,<2",
+    "python-dotenv>=1.2.2",
     "scikit-learn>=1.9.0",
 ]
