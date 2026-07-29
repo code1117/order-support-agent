@@ -26,7 +26,7 @@ Use `python3` instead of `python` if that is the command configured on your mach
 Clone the repository and enter the project directory:
 
 ```bash
-git clone YOUR_REPOSITORY_URL
+git clone https://github.com/code1117/order-support-agent.git
 cd order-support-agent
 ```
 
