@@ -57,6 +57,19 @@ ACCOUNTS = {
 }
 
 
+PRIOR_TICKETS = {
+    "CUST-001": [
+        "Asked about a delayed order last month and received an account credit.",
+    ],
+    "CUST-002": [
+        "Reported a damaged package and requested a replacement.",
+    ],
+    "CUST-003": [
+        "Previously appealed an account warning.",
+    ],
+    "CUST-004": [],
+}
+
 ORDER_OWNERS = {
     order_id: order["customer_id"]
     for order_id, order in ORDERS.items()
